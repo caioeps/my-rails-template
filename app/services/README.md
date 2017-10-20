@@ -41,7 +41,7 @@ classes would be named `Users::Register` and `Purchases::Complete` respectevely.
 class Purchases::Complete
   attr_reader :purchase, :user
 
-  def initialize(purchase:, :user)
+  def initialize(purchase:, user:)
     @purchase = purchase
     @user     = user
   end
