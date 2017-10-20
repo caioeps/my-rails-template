@@ -10,6 +10,8 @@ end
 def apply_template!
   template 'Gemfile.tt', force: true
   copy_file 'gitignore', '.gitignore', force: true
+
+  apply 'app/template.rb'
 end
 
 def preexisting_git_repo?
