@@ -7,6 +7,8 @@ run 'rm -rf app/controllers/concerns'
 run 'rm -rf app/models/concerns'
 
 run 'mkdir app/decorators'
+
+run 'mkdir app/decorators'
 copy_file 'app/decorators/README.md'
 generate 'draper:install'
 
@@ -17,6 +19,7 @@ run 'mkdir app/queries'
 copy_file 'app/queries/README.md'
 
 run 'mkdir app/services'
+copy_file 'app/services/README.md'
 
 run 'mkdir app/validators'
 
