@@ -61,7 +61,7 @@ class Purchases::Complete
   end
 
   def notify_user_about_purchase
-    Purchases::Notifier.new(purchase: purchase, user: user).call
+    Purchases::Notify.new(purchase: purchase, user: user).call
   end
 end
 ```
