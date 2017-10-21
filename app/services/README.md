@@ -66,3 +66,12 @@ class Purchases::Complete
 end
 ```
 
+### Readings
+
+[Rails Handbook](https://github.com/infinum/rails-handbook/blob/master/Design%20Patterns/Service%20Objects.md)
+
+[Keeping your rails controllers dry with services](https://blog.engineyard.com/2014/keeping-your-rails-controllers-dry-with-services)
+
+[Gourmet service objects](http://brewhouse.io/blog/2014/04/30/gourmet-service-objects.html)
+
+[Railscast service objects](http://railscasts.com/episodes/398-service-objects)
