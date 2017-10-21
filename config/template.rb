@@ -4,3 +4,5 @@ template 'config/database.sample.yml.tt'
 copy_file 'config/initializers/locale.rb'
 copy_file 'config/locales/pt-BR.yml'
 
+copy_file 'config/brakeman.yml'
+
