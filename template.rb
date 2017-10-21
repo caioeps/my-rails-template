@@ -15,6 +15,13 @@ def apply_template!
   apply 'config/template.rb'
 end
 
+def ask_with_default(question, color, default)
+  return default unless $stdin.tty?
+  question = (question.split("?") << " [#{default}]?").join
+  answer = ask(question, color)
+  answer.to_s.strip.empty? ? default : answer
+end
+
 def assert_minimum_rails_version
   requirement = Gem::Requirement.new(RAILS_REQUIREMENT)
   rails_version = Gem::Version.new(Rails::VERSION::STRING)
@@ -28,7 +35,7 @@ end
 def postgresql_username
   if yes?('Do you want to use a custom database username for development and test?')
     say('Type your custom username below...')
-    username = ask('username: ')
+    username = ask('username: ', :blue)
     "username: #{username}"
   end
 end
@@ -36,7 +43,7 @@ end
 def postgresql_password
   if yes?('Do you wan to use a custom database password for development and test?')
     say('Type your custom password below...')
-    password = ask('password: ')
+    password = ask('password: ', :blue)
     "password: #{password}"
   end
 end
@@ -44,6 +51,16 @@ end
 def preexisting_git_repo?
   @preexisting_git_repo ||= File.exist?(".git")
   @preexisting_git_repo == true
+end
+
+def production_hostname
+  @production_hostname ||=
+    ask_with_default("Production hostname?", :blue, "example.com")
+end
+
+def staging_hostname
+  @staging_hostname ||=
+    ask_with_default("Staging hostname?", :blue, "staging.example.com")
 end
 
 apply_template!
