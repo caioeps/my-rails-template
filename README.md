@@ -11,3 +11,10 @@ Then, you'll need to set it up.
 ```
 bin/setup
 ```
+
+Finally, to start your server
+
+```
+foreman start --procfile=Procfile.development
+```
+
