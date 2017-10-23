@@ -14,6 +14,10 @@ def apply_template!
   apply 'app/template.rb'
   apply 'config/template.rb'
   apply 'bin/template.rb'
+
+  run 'mkdir spec'
+
+  apply 'spec/template.rb'
 end
 
 def ask_with_default(question, color, default)
