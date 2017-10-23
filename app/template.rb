@@ -12,7 +12,23 @@ run 'mkdir app/decorators'
 copy_file 'app/decorators/README.md'
 create_file 'app/decorators/application_decorator.rb' do
   <<~RUBY
-    class ApplicationDecorator < Draper::Decorator
+    class ApplicationDecorator < SimpleDelegator
+      class << self
+        def decorate_collection(collection)
+          collection.map { |obj| new(obj) }
+        end
+      end
+
+      private
+
+      def object
+        __getobj__
+      end
+
+      def helpers
+        ApplicationController.helpers
+      end
+      alias_method :h, :helpers
     end
   RUBY
 end

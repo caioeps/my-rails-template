@@ -20,6 +20,9 @@ def apply_template!
 
   apply 'spec/template.rb'
 
+  copy_file 'Procfile'
+  copy_file 'Procfile.development'
+
   after_bundle do
     run 'spring stop'
     git :init
