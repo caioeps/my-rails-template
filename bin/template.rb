@@ -30,18 +30,18 @@ end
 insert_into_file SETUP_FILE, after: /(bundle install)((.)*)(\n)/ do
   <<~RUBY
       if !heroku_staging_app_name.empty? && !`git remote -v`.match(/staging/)
-        puts "\n== Setting up staging remote =="
+        puts "\\n== Setting up staging remote =="
         system("git remote add staging \#{STAGING_REMOTE}") ? puts('...done.') : error('...error.')
       elsif !heroku_staging_app_name.empty? && `git remote -v`.match(/staging/)
-        puts "\n== Changing staging remote =="
+        puts "\\n== Changing staging remote =="
         system("git remote set-url staging \#{STAGING_REMOTE}") ? puts('...done.') : error('...error.')
       end
 
       if !heroku_production_app_name.empty? && !`git remote -v`.match(/production/)
-        puts "\n== Setting up production remote =="
+        puts "\\n== Setting up production remote =="
         system("git remote add production \#{PRODUCTION_REMOTE}") ? puts('...done.') : error('...error.')
       elsif !heroku_production_app_name.empty? && `git remote -v`.match(/production/)
-        puts "\n== Changing production remote =="
+        puts "\\n== Changing production remote =="
         system("git remote set-url production \#{PRODUCTION_REMOTE}") ? puts('...done.') : error('...error.')
       end
   RUBY
