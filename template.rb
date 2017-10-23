@@ -8,8 +8,9 @@ def source_paths
 end
 
 def apply_template!
-  template 'Gemfile.tt', force: true
   copy_file 'gitignore', '.gitignore', force: true
+
+  copy_file 'Gemfile.sample', 'Gemfile', force: true
 
   apply 'app/template.rb'
   apply 'config/template.rb'
@@ -18,6 +19,13 @@ def apply_template!
   run 'mkdir spec'
 
   apply 'spec/template.rb'
+
+  after_bundle do
+    run 'spring stop'
+    git :init
+    git add: '.'
+    git commit: "-a -m 'Initial commit'"
+  end
 end
 
 def ask_with_default(question, color, default)

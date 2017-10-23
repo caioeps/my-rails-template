@@ -3,6 +3,8 @@ template 'config/environments/staging.rb.tt'
 remove_file 'config/database.yml'
 template 'config/database.sample.yml.tt'
 
+run 'cp config/database.sample.yml config/database.yml'
+
 copy_file 'config/initializers/generators.rb'
 copy_file 'config/initializers/locale.rb'
 copy_file 'config/initializers/log_rotator.rb'
@@ -22,13 +24,6 @@ insert_into_file "config/environments/development.rb", after: mailer_regex do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
   config.action_mailer.asset_host = "http://localhost:3000"
-  RUBY
-end
-
-insert_into_file "config/environments/development.rb", before: /^end/ do
-  <<-RUBY
-  # Automatically inject JavaScript needed for LiveReload.
-  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
   RUBY
 end
 

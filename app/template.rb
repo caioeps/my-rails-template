@@ -10,7 +10,12 @@ run 'mkdir app/decorators'
 
 run 'mkdir app/decorators'
 copy_file 'app/decorators/README.md'
-generate 'draper:install'
+create_file 'app/decorators/application_decorator.rb' do
+  <<~RUBY
+    class ApplicationDecorator < Draper::Decorator
+    end
+  RUBY
+end
 
 run 'mkdir app/policies'
 copy_file 'app/policies/README.md'
