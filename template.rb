@@ -13,6 +13,7 @@ def apply_template!
 
   apply 'app/template.rb'
   apply 'config/template.rb'
+  apply 'bin/template.rb'
 end
 
 def ask_with_default(question, color, default)
@@ -61,6 +62,15 @@ end
 def staging_hostname
   @staging_hostname ||=
     ask_with_default("Staging hostname?", :blue, "staging.example.com")
+end
+
+def template_path
+  File.expand_path(File.dirname(__FILE__)) + '/'
+end
+
+def use_yarn?
+  @use_yarn ||=
+    yes?('Do you want to use Yarn to manage your assets dependencies?', :blue)
 end
 
 apply_template!
