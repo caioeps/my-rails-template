@@ -48,6 +48,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
   config.include ActiveJob::TestHelper, type: :feature
+  config.include MailerHelper
 
   config.before :suite do
     DatabaseCleaner.clean_with :truncation
