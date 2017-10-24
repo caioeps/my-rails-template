@@ -33,6 +33,11 @@ create_file 'app/decorators/application_decorator.rb' do
   RUBY
 end
 
+run 'mkdir app/decorators'
+copy_file 'app/forms/README.md'
+
+directory 'app/nulls'
+
 run 'mkdir app/policies'
 copy_file 'app/policies/README.md'
 
