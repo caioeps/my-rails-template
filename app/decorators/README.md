@@ -102,6 +102,6 @@ Decorators are the ideal place to:
 
 
 ### Read more about the Decorator pattern
-[https://github.com/infinum/rails-handbook/blob/master/Design%20Patterns/Decorators.md](https://github.com/infinum/rails-handbook/blob/master/Design%20Patterns/Decorators.md)
-[https://thepugautomatic.com/2014/03/draper/](https://thepugautomatic.com/2014/03/draper/)
+* [https://github.com/infinum/rails-handbook/blob/master/Design%20Patterns/Decorators.md](https://github.com/infinum/rails-handbook/blob/master/Design%20Patterns/Decorators.md)
+* [https://thepugautomatic.com/2014/03/draper/](https://thepugautomatic.com/2014/03/draper/)
 
