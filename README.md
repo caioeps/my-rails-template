@@ -18,3 +18,6 @@ Finally, to start your server
 foreman start --procfile=Procfile.development
 ```
 
+### Must readings
+[http://solnic.eu/2012/07/09/single-responsibility-principle-on-rails-explained.html](http://solnic.eu/2012/07/09/single-responsibility-principle-on-rails-explained.html)
+[https://github.com/infinum/rails-handbook/tree/master/Design%20Patterns](https://github.com/infinum/rails-handbook/tree/master/Design%20Patterns)
