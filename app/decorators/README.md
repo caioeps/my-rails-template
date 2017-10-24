@@ -5,7 +5,7 @@ A decorator adds an OO layer of presentation logic to your view.
 Without decorators, this functionality might have been tangled up in procedural
 helpers or bloating your models.
 
-With decorators decorators, you can wrapy our models with presentation-related
+With decorators, you can wrap your models with presentation-related
 logic to organise - and test - this layer of your app much more effectively.
 
 ## Why Use a Decorator?
@@ -18,7 +18,8 @@ before handing it off to the view:
 ```ruby
 # app/controllers/articles_controller.rb
 def show
-  @article = Article.find(params[:id]).decorate
+  @article = Article.find(params[:id])
+  @artice_decorator = ArticleDecorator.new(@article)
 end
 ```
 
@@ -68,10 +69,8 @@ Instead, you implement a decorator:
 ```ruby
 # app/decorators/article_decorator.rb
 class ArticleDecorator < ApplicationDecorator
-  delegate_all
-
   def publication_status
-    if published?
+    if object.published?
       "Published at #{published_at}"
     else
       "Unpublished"
@@ -102,5 +101,7 @@ Decorators are the ideal place to:
   into a hyperlink
 
 
-### Read more about the Draper gem
-[https://github.com/drapergem/draper](https://github.com/drapergem/draper)
+### Read more about the Decorator pattern
+[https://github.com/infinum/rails-handbook/blob/master/Design%20Patterns/Decorators.md](https://github.com/infinum/rails-handbook/blob/master/Design%20Patterns/Decorators.md)
+[https://thepugautomatic.com/2014/03/draper/](https://thepugautomatic.com/2014/03/draper/)
+
