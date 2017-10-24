@@ -3,10 +3,10 @@ copy_file "app/assets/stylesheets/application.scss"
 remove_file "app/assets/stylesheets/application.css"
 
 run 'rm -rf app/controllers/concerns'
-
 run 'rm -rf app/models/concerns'
 
-run 'mkdir app/decorators'
+run 'mkdir app/adapters'
+copy_file 'app/decorators/README.md'
 
 run 'mkdir app/decorators'
 copy_file 'app/decorators/README.md'
