@@ -11,11 +11,34 @@ copy_file 'config/initializers/log_rotator.rb'
 
 copy_file 'config/locales/pt-BR.yml'
 
+run 'mkdir config/locales/pt-BR'
+
 copy_file 'config/brakeman.yml'
+
+initializer 'routes_subfolders.rb' do
+  <<~RUBY
+    app = Rails.application
+    routes = Dir[Rails.root.join("config/routes/**/*.rb").to_s]
+    app.routes_reloader.paths.unshift(*routes)
+    app.config.paths["config/routes.rb"].concat(routes)
+  RUBY
+end
+
+run 'mkdir config/routes'
+
+# config/application.rb
+insert_into_file 'config/application.rb',
+  after: /class Application < Rails::Application\n/ do
+  <<-RUBY
+    config.time_zone = 'Brasilia'
+    config.assets.quiet = true
+    config.active_job.queue_adapter = :sidekiq
+    config.autoload_paths += %W( \#{config.root}/lib )
+  RUBY
+end
 
 # environments/development.rb
 mailer_regex = /config\.action_mailer\.raise_delivery_errors = false\n/
-
 comment_lines "config/environments/development.rb", mailer_regex
 insert_into_file "config/environments/development.rb", after: mailer_regex do
   <<-RUBY
